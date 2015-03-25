@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Hardware" Class="hwDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=Hardware;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="HardwareConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Device" Member="Device">
+    <Type Name="Device">
+      <Column Name="DeviceUid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductUid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Classification" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="SequenceNo" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="StorageUnits" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="Custodian" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="EndUser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StoragePos" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="StoragePosNo" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="InventoryResult" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="InventoryDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="UpdateUser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Memo" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Product_Device" Member="Product" ThisKey="ProductUid" OtherKey="ProductUid" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Supplier" Member="Supplier">
+    <Type Name="Supplier">
+      <Column Name="SupplierUid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Contact" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ComTel" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="WebUrl" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Association Name="Supplier_Product" Member="Product" ThisKey="SupplierUid" OtherKey="SupplierUid" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Manufacturer" Member="Manufacturer">
+    <Type Name="Manufacturer">
+      <Column Name="ManufacturerUid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EName" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="WebUrl" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="Tel" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Manufacturer_Product" Member="Product" ThisKey="ManufacturerUid" OtherKey="ManufacturerUid" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product" Member="Product">
+    <Type Name="Product">
+      <Column Name="ProductUid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="ManufacturerUid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PurchaseDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Valid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Memo1" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Memo2" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="GetSource" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="BudgetarySource" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="GetDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Property" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="ImgUrl" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="WebUrl" Type="System.String" DbType="NChar(150)" CanBeNull="true" />
+      <Column Name="Detail" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SupplierUid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Product_Device" Member="Device" ThisKey="ProductUid" OtherKey="ProductUid" Type="Device" />
+      <Association Name="Manufacturer_Product" Member="Manufacturer" ThisKey="ManufacturerUid" OtherKey="ManufacturerUid" Type="Manufacturer" IsForeignKey="true" />
+      <Association Name="Supplier_Product" Member="Supplier" ThisKey="SupplierUid" OtherKey="SupplierUid" Type="Supplier" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
